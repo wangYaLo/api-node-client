@@ -1,26 +1,41 @@
-# api-create
+### 前端设计文档
 
-## Project setup
-```
-npm install
+#### 技术选型
+
+| 技术栈                 | 描述        |
+| ---------------------- | ----------- |
+| vue2.x                 | 前端框架    |
+| typescript             | 语言        |
+| vue/cli3               | 打包工具    |
+| vue-property-decorator | class类写法 |
+
+#### 代码规范
+
+##### 数组：
+
+使用直接赋值方式取代push
+
+```typescript
+arr[arr.length] = xxx
 ```
 
-### Compiles and hot-reloads for development
-```
-npm run serve
+使用...解构运算符替代拷贝数组
+
+```typescript
+const arr = [1, 2, 3, 4];
+const newarr = [...arr];
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
+使用...解构运算符替代将类数组转换成数组的Array.from；
 
-### Lints and fixes files
-```
-npm run lint
-```
+##### z-index
 
-### Customize configuration
+| class：z-index | 等级 | 页面       |
+| -------------- | ---- | ---------- |
+| .navbar        | 10   | Navbar.vue |
+|                |      |            |
+|                |      |            |
+
 "sass-loader": "^10.0.2",
 "node-sass": "^6.0.1",
 

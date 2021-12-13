@@ -46,7 +46,8 @@
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator';
 import { callbackType, rulesType } from '@/types/element-ui-rules-type';
-import { userToSignUp } from '@/request/api/login'
+import { userToSignIn, userToSignUp } from '@/request/api/login'
+
 @Component({
   name: 'login'
 })
@@ -90,6 +91,16 @@ export default class Login extends Vue {
   toSignIn: boolean = true;
   $message: any;
   $refs: any;
+  mounted(): void {
+    const username = window.localStorage.getItem('usernameApi')
+    const password = window.localStorage.getItem('passwordApi')
+    if (username && password && window.localStorage.getItem('checkedApi') === 'yes') {
+      (document.body.querySelector('.loginCheckBox') as any).checked = true
+      this.loginForm.username = username
+      this.loginForm.password = password
+      this.submitLogin()
+    }
+  }
   submitLogin(): void {
     this.$refs.rulesForm.validate((isOk: boolean, obj: { [x: string]: any }) => {
       if (isOk) {
@@ -97,6 +108,18 @@ export default class Login extends Vue {
           username: this.loginForm.username,
           password: this.loginForm.password
         };
+        userToSignIn(data).then((res) => {
+          const code = res.data.code
+          if (code === 'success') {
+            const checked: boolean = (document.body.querySelector('.loginCheckBox') as any).checked
+            if (checked) {
+              window.localStorage.setItem('checkedApi', 'yes')
+              window.localStorage.setItem('usernameApi', this.loginForm.username)
+              window.localStorage.setItem('passwordApi', this.loginForm.password)
+            }
+            this.$router.push('/')
+          }
+        })
       } else {
         this.$message({
           message: obj[Object.keys(obj)[0]][0].message as string,
@@ -213,7 +236,7 @@ export default class Login extends Vue {
   display: flex;
   justify-content: left;
   align-items: center;
-  background: url('../../assets/img/dongman.png') no-repeat;
+  // background: url('../../assets/img/dongman.png') no-repeat;
   background-size: cover;
   .loginbox {
     display: flex;
@@ -228,7 +251,7 @@ export default class Login extends Vue {
     .title{
       width: 100%;
       font-size: 24px;
-      color: rgba(255, 255, 255, .7)
+      color: rgba(252,254,242, .7)
     }
     .inputbox {
       display: flex;

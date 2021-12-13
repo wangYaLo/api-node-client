@@ -8,7 +8,6 @@ const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'Layout',
-    redirect: '/login',
     component: Layout
   },
   {

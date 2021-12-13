@@ -9,6 +9,7 @@ const service: AxiosInstance = axios.create({
 
 // request请求拦截
 service.interceptors.request.use((config: any) => {
+  config.headers['Content-Type'] = 'application/json; charset=UTF-8';
   return config
 }, (error: any) => {
   return Promise.reject(error)
