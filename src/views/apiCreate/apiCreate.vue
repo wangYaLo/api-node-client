@@ -2,7 +2,7 @@
   <div class="apiService">
     <file-box v-for="item in apiArr" :key="item.name" :boxName="item.name" :boxItem="item"></file-box>
     <div style=" width: 120px; height:0;" v-for="item in 10" :key="item*99"></div>
-    <api-box v-for="item in apiBoxArr" :key="item.name"></api-box>
+    <api-box v-for="(item, index) in apiBoxArr" :key="index"></api-box>
   </div>
 </template>
 
@@ -25,15 +25,20 @@ export default class ApiCreate extends Vue {
     user: 'admin1',
     name: 'api111'
   }];
-  public apiBoxArr: { name: string }[] = []
+  public apiBoxArr: { user: string; name: string; }[] = []
   $EventBus: any;
   mounted(): void {
     const clientHeight = document.getElementsByClassName('navbar')[0].clientHeight;
     const apiHeight = document.getElementsByClassName('apiService')[0];
     const client = document.documentElement.clientHeight;
     (apiHeight as any).style.height = (client - clientHeight - 30) + 'px';
-    this.$EventBus.$on('addApiBox', (data) => {
-      console.log(data.toString());
+    this.$EventBus.$on('addApiBox', (data: { user: string; name: string; }) => {
+      const isAdd = this.apiBoxArr.filter((item: { user: string; name: string; }) => {
+        return item === data
+      })
+      if (isAdd.length === 0) {
+        this.apiBoxArr.push(data)
+      }
     })
   }
 }
