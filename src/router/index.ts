@@ -8,7 +8,15 @@ const routes: Array<RouteConfig> = [
   {
     path: '/',
     name: 'Layout',
-    component: Layout
+    redirect: '/apicreate',
+    component: Layout,
+    children: [
+      {
+        path: '/apicreate',
+        name: 'apicreate',
+        component: () => import('@/views/apiCreate/apiCreate.vue')
+      }
+    ]
   },
   {
     path: '/login',

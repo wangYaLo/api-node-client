@@ -55,7 +55,6 @@ export default class imgHover extends Vue {
     display: flex;
     .pStyle{
       margin: 10px 0;
-      
     }
   }
 </style>

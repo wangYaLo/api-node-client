@@ -16,7 +16,7 @@ export default class imgHover extends Vue {
     // 鼠标在左右
     const wCursor = ((event.offsetX <= 0 && event.offsetX >= -2) || (event.offsetX >= event.target.clientWidth && event.offsetX <= event.target.clientWidth + 2)) && (event.offsetY >= 4 && event.offsetY <= event.target.clientHeight - 4);
     // 鼠标在上下
-    const sCursor = ((event.offsetY <= 0 && event.offsetY >= -2) || (event.offsetY >= event.target.clientHeight && event.offsetX <= event.target.clientHeight + 2)) && (event.offsetX >= 4 && event.offsetX <= event.target.clientWidth - 4);
+    const sCursor = ((event.offsetY <= 0 && event.offsetY >= -2) || (event.offsetY >= event.target.clientHeight && event.offsetY <= event.target.clientHeight + 2)) && (event.offsetX >= 4 && event.offsetX <= event.target.clientWidth - 4);
     // 鼠标在左上或者右下
     const seCursor = (event.offsetX <= 4 && event.offsetY <= 4) || (event.offsetX >= event.target.clientWidth - 4 && event.offsetY >= event.target.clientHeight - 4);
     // 鼠标在左下或者右上
@@ -90,8 +90,6 @@ export default class imgHover extends Vue {
               ev1.target.style.left = ev1.target.offsetLeft + (newEvent.screenX - getscreenX) + 'px'
               ev1.target.style.width = ev1.target.clientWidth - (newEvent.screenX - getscreenX) + 'px'
             } else {
-              console.log(123);
-              
               ev1.target.style.width = ev1.target.clientWidth + (newEvent.screenX - getscreenX) + 'px'
             }
           }
@@ -190,5 +188,6 @@ export default class imgHover extends Vue {
     position: fixed;
     top: 60px;
     left: 100px;
+    background-color: #f1f1f1;
   }
 </style>

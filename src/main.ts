@@ -5,8 +5,9 @@ import store from './store'
 import element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 Vue.use(element)
-Vue.config.productionTip = false
-
+Vue.config.productionTip = false;
+// 挂载事件中心
+Vue.prototype.$EventBus = new Vue();
 new Vue({
   router,
   store,

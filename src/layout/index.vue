@@ -2,7 +2,7 @@
   <div class="pageMain">
       <Navbar ref="navbar"></Navbar>
       <div class="main">
-        <api-box></api-box>
+        <app-main></app-main>
       </div>
   </div>
 </template>
@@ -10,12 +10,12 @@
 <script lang='ts'>
 import { Component, Vue } from 'vue-property-decorator'
 import Navbar from './modules/Navbar.vue'
-import apiBox from './modules/apiBox.vue'
+import appMain from './modules/appMain.vue'
 @Component({
   name: 'layout',
   components: {
     Navbar,
-    apiBox
+    appMain
   }
 })
 export default class Layout extends Vue {

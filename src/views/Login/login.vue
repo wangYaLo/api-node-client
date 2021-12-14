@@ -117,7 +117,7 @@ export default class Login extends Vue {
               window.localStorage.setItem('usernameApi', this.loginForm.username)
               window.localStorage.setItem('passwordApi', this.loginForm.password)
             }
-            this.$router.push('/')
+            this.$router.push('/apicreate')
           }
         })
       } else {
