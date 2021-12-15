@@ -43,6 +43,7 @@ import FontForEach from './fontForech.vue'
   }
 })
 export default class Navbar extends Vue {
+  public $EventBus: any;
   public userImgShow: boolean = true;
   public addImgShow: boolean = true;
   public show: boolean = true;
@@ -51,7 +52,7 @@ export default class Navbar extends Vue {
     this.isUsername = window.localStorage.getItem('username') as string;
   }
   addApi(): void {
-
+    this.$EventBus.$emit('apiCreate')
   }
 
   //获取登录信息
