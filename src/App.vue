@@ -3,6 +3,19 @@
     <router-view/>
   </div>
 </template>
+<script lang="ts">
+import { Component, Vue} from 'vue-property-decorator'
+
+@Component({
+  name: 'app'
+})
+export default class pp extends Vue {
+  mounted(): void {
+    const title = document.getElementsByTagName('title')[0];
+    title.innerHTML = 'API模拟';
+  }
+}
+</script>
 
 <style lang="scss">
 #app {
